@@ -21,6 +21,11 @@ function generatePassword(){
             totalCharacters = totalCharacters.concat(upperCase);
             console.log(totalCharacters);
         }
+        let lowerCaseTrue = confirm("Would you like lowercase characters?");
+        if (lowerCaseTrue){
+            totalCharacters = totalCharacters.concat(lowerCase);
+            console.log(totalCharacters);
+        }
     }
 }
 // // Assignment Code
