@@ -3,10 +3,9 @@ var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 var specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "]", "{", "}", "|", "\u005c", ";", ":", "'", "\u0022", "?", "<", ".", ",", ">", "/"];
 var totalCharacters = [];
-var password = "";
 
 
-console.log(password);
+// console.log(password);
 
 
 function generatePassword(){
@@ -37,13 +36,19 @@ function generatePassword(){
             totalCharacters = totalCharacters.concat(specialCharacters);
             console.log(totalCharacters);
         }
+
         var sizeNum = parseInt(size);
         var count = 0;
+        var password ="";
+
         while (count != sizeNum){
             password =password + totalCharacters[Math.floor(Math.random()*totalCharacters.length)];
             count = count + 1;
         }
         console.log(password);
+
+        var passwordTextBox = document.getElementById("password");
+        passwordTextBox.textContent = password;
     }
 }
 // // Assignment Code
