@@ -8,26 +8,8 @@ function generatePassword(){
     var specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "]", "{", "}", "|", "\u005c", ";", ":", "'", "\u0022", "?", "<", ".", ",", ">", "/"];
     var totalCharacters = [];
 
-    // Accept input from the user for password size
-    let size = prompt("How many characters would you like in this password?\nPassword must be between 8 and 128 characters");
-    
-    // Checks to see if user selected cancel
-    if (!size){
-
-    } else
-    // Condition to ensure only numbers are entered
-    if (/\D/.test(size)){
-        alert("Only numbers are allowed");
-        generatePassword();
-    } else
-
-    // Condition to ensure the number entered is between 8 and 128
-    if(size < 8 || size > 128){
-        alert("Password size must be between 8 and 128 characters");
-        generatePassword();
-    } else
-    // What to be done once the above 2 contitions are not met
-    {
+    // Function to generate password once all checks are complete
+    function checks(){
         // Checks to see if the user wants upper case characters in the password and adds them to the total pool of characters if the user wishes it
         let upperCaseTrue = confirm("Would you like upper case characters?")
         if (upperCaseTrue){
@@ -48,6 +30,11 @@ function generatePassword(){
         if (specialCharactersTrue){
             totalCharacters = totalCharacters.concat(specialCharacters);
         }
+
+        if (!upperCaseTrue & !lowerCaseTrue & !numbersTrue & !specialCharactersTrue){
+            alert("There must be at least one option selected");
+            checks();
+        }
         // Declaration of variables needed to complete the while loop
         var sizeNum = parseInt(size); /* ensures that the size variable is changed to an integer */
         var count = 0;
@@ -63,5 +50,28 @@ function generatePassword(){
         var passwordTextBox = document.getElementById("password"); 
         // Displaying the password in the textbox
         passwordTextBox.textContent = password;
+    }
+
+    // Accept input from the user for password size
+    let size = prompt("How many characters would you like in this password?\nPassword must be between 8 and 128 characters");
+    
+    // Checks to see if user selected cancel
+    if (!size){
+
+    } else
+    // Condition to ensure only numbers are entered
+    if (/\D/.test(size)){
+        alert("Only numbers are allowed");
+        generatePassword();
+    } else
+
+    // Condition to ensure the number entered is between 8 and 128
+    if(size < 8 || size > 128){
+        alert("Password size must be between 8 and 128 characters");
+        generatePassword();
+    } else
+    // What to be done once the above 2 contitions are not met
+    {
+        checks();   
     }
 }
