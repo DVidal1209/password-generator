@@ -10,15 +10,21 @@ function generatePassword(){
 
     // Accept input from the user for password size
     let size = prompt("How many characters would you like in this password?\nPassword must be between 8 and 128 characters");
+    
+    // Checks to see if user selected cancel
+    if (!size){
 
+    } else
     // Condition to ensure only numbers are entered
     if (/\D/.test(size)){
         alert("Only numbers are allowed");
+        generatePassword();
     } else
 
     // Condition to ensure the number entered is between 8 and 128
     if(size < 8 || size > 128){
         alert("Password size must be between 8 and 128 characters");
+        generatePassword();
     } else
     // What to be done once the above 2 contitions are not met
     {
