@@ -3,9 +3,10 @@ var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 var specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "]", "{", "}", "|", "\u005c", ";", ":", "'", "\u0022", "?", "<", ".", ",", ">", "/"];
 var totalCharacters = [];
+var password = "";
 
 
-console.log(totalCharacters);
+console.log(password);
 
 
 function generatePassword(){
@@ -26,6 +27,23 @@ function generatePassword(){
             totalCharacters = totalCharacters.concat(lowerCase);
             console.log(totalCharacters);
         }
+        let numbersTrue = confirm("Would you like numbers?")
+        if (numbersTrue){
+            totalCharacters = totalCharacters.concat(numbers);
+            console.log(totalCharacters);
+        }
+        let specialCharactersTrue = confirm("Would you like special characters?");
+        if (specialCharactersTrue){
+            totalCharacters = totalCharacters.concat(specialCharacters);
+            console.log(totalCharacters);
+        }
+        var sizeNum = parseInt(size);
+        var count = 0;
+        while (count != sizeNum){
+            password =password + totalCharacters[Math.floor(Math.random()*totalCharacters.length)];
+            count = count + 1;
+        }
+        console.log(password);
     }
 }
 // // Assignment Code
