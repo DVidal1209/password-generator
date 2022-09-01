@@ -10,25 +10,32 @@ function generatePassword(){
 
     // Function to generate password once all checks are complete
     function checks(){
+        var password ="";
         // Checks to see if the user wants upper case characters in the password and adds them to the total pool of characters if the user wishes it
         let upperCaseTrue = confirm("Would you like upper case characters?")
         if (upperCaseTrue){
             totalCharacters = totalCharacters.concat(upperCase);
+            password = password +  upperCase[Math.floor(Math.random()*upperCase.length)];
         }
         // Checks to see if the user wants lower case characters in the password and adds them to the total pool of characters if the user wishes it
         let lowerCaseTrue = confirm("Would you like lowercase characters?");
         if (lowerCaseTrue){
             totalCharacters = totalCharacters.concat(lowerCase);
+            password = password +  lowerCase[Math.floor(Math.random()*lowerCase.length)]
         }
         // Checks to see if the user wants numbersin the password and adds them to the total pool of characters if the user wishes it
         let numbersTrue = confirm("Would you like numbers?")
         if (numbersTrue){
             totalCharacters = totalCharacters.concat(numbers);
+            
+            password = password + numbers[Math.floor(Math.random()*numbers.length)]
         }
         // Checks to see if the user wants special characters in the password and adds them to the total pool of characters if the user wishes it
         let specialCharactersTrue = confirm("Would you like special characters?");
         if (specialCharactersTrue){
             totalCharacters = totalCharacters.concat(specialCharacters);
+            
+            password = password + specialCharacters[Math.floor(Math.random()*specialCharacters.length)]
         }
 
         if (!upperCaseTrue & !lowerCaseTrue & !numbersTrue & !specialCharactersTrue){
@@ -37,14 +44,30 @@ function generatePassword(){
         }
         // Declaration of variables needed to complete the while loop
         var sizeNum = parseInt(size); /* ensures that the size variable is changed to an integer */
-        var count = 0;
-        var password ="";
+        var count = password.length;
 
         // While loop to create the password from the array of characters
         while (count != sizeNum){
             password =password + totalCharacters[Math.floor(Math.random()*totalCharacters.length)];
-            count = count + 1;
+            count = count +  1;
         }
+
+        // Function to randomize a string
+        String.prototype.shuffle = function () {
+            var a = this.split(""),
+                n = a.length;
+        
+            for(var i = n - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var tmp = a[i];
+                a[i] = a[j];
+                a[j] = tmp;
+            }
+            return a.join("");
+        }
+
+        // Randomize the order of the password
+        password = password.shuffle();
 
         // Declaration of the password texbox as a variable
         var passwordTextBox = document.getElementById("password"); 
