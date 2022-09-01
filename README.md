@@ -15,6 +15,17 @@ The password length must be between 8 and 128 and at least one of the options (2
 
 The webpage is accessible at: https://dvidal1209.github.io/password-generator/
 
+## Instructions on how to use password generator
+
+Steps for using password generator:
+1. Click on the "Generate Password" button.
+2. Enter the desired size for your password (Must be between 8 and 128).
+3. When prompted about Upper Case chartacters click "OK" for yes and "Cancel" for no.
+4. When prompted about Lower Case chartacters click "OK" for yes and "Cancel" for no.
+5. When prompted about Numbers click "OK" for yes and "Cancel" for no.
+6. When prompted about Special chartacters click "OK" for yes and "Cancel" for no.
+7. Once complete your randomly generated password will appear on the webpage and you may copy and paste it for future use.
+
 ## Screenshots
 
 ![Password Generator upon loading in](./assets/images/password-generator-on-load.png)
